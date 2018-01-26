@@ -292,7 +292,6 @@ service gx_fpd /system/bin/gx_fpd
     class late_start
     user root
     group root system
-    seclabel u:r:goodix:s0
 
 service fidoca /system/vendor/bin/fidoca
     class late_start
@@ -304,7 +303,6 @@ service thermanager /system/bin/thermanager ${ro.thermanager.config}
     class late_start
     user root
     group root
-    seclabel u:r:thermanager:s0
 
 on property:persist.sys.le_fast_chrg_enable=1
     write /sys/class/power_supply/battery/le_quick_charge_mode 0
