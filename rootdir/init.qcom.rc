@@ -819,6 +819,11 @@ on property:sys.wfdservice=enable
 on property:sys.wfdservice=disable
     stop wfdservice
 
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    socket fpce stream 0666 system system
+    user system
+
 service fidodaemon /system/vendor/bin/fidodaemon
     class late_start
     user system
