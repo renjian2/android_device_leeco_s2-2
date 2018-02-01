@@ -5884,6 +5884,10 @@ TRANS_INIT_ERROR3:
 TRANS_INIT_ERROR2:
     m_pParamHeap->deallocate();
 
+TRANS_INIT_ERROR1:
+    delete m_pParamHeap;
+    m_pParamHeap = NULL;
+
 TRANS_INIT_DONE:
     return rc;
 }
@@ -7148,7 +7152,7 @@ int32_t QCameraParameters::configFrameCapture(bool commitSettings)
  *==========================================================================*/
 int32_t QCameraParameters::resetFrameCapture(bool commitSettings)
 {
-    int32_t rc = NO_ERROR;
+    int32_t rc = NO_ERROR, i = 0;
     memset(&m_captureFrameConfig, 0, sizeof(cam_capture_frame_config_t));
 
     if (commitSettings) {
@@ -9532,7 +9536,7 @@ int32_t QCameraParameters::getStreamFormat(cam_stream_type_t streamType,
             format = m_pCapability->analysis_recommended_format;
         } else {
             ALOGE("%s: invalid analysis_recommended_format %d\n",
-                    __func__, m_pCapability->analysis_recommended_format);
+                   __func__, m_pCapability->analysis_recommended_format);
             format = mAppPreviewFormat;
         }
       break;
@@ -11530,9 +11534,11 @@ int32_t QCameraParameters::commitParamChanges()
  *
  * RETURN     : none
  *==========================================================================*/
-QCameraReprocScaleParam::QCameraReprocScaleParam(__unused QCameraParameters *parent)
-  : mScaleEnabled(false),
+QCameraReprocScaleParam::QCameraReprocScaleParam(QCameraParameters *parent)
+  : mParent(parent),
+    mScaleEnabled(false),
     mIsUnderScaling(false),
+    mScaleDirection(0),
     mNeedScaleCnt(0),
     mSensorSizeTblCnt(0),
     mSensorSizeTbl(NULL),
@@ -12992,7 +12998,7 @@ void QCameraParameters::setBufBatchCount(int8_t buf_cnt)
  *
  * RETURN     :  error value
  *==========================================================================*/
-int32_t QCameraParameters::setCustomParams(__unused const QCameraParameters& params)
+int32_t QCameraParameters::setCustomParams(const QCameraParameters& params)
 {
     int32_t rc = NO_ERROR;
 
