@@ -42,8 +42,7 @@
 
 #define DEVINFO_FILE "/dev/block/bootdevice/by-name/devinfo"
 
-namespace android {
-namespace init {
+using android::init::property_set;
 
 static int read_file2(const char *fname, char *data, int max_size)
 {
@@ -182,6 +181,3 @@ void vendor_load_properties() {
 
     init_alarm_boot_properties();
 }
-
-}  // namespace init
-}  // namespace android
