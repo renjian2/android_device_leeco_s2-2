@@ -139,6 +139,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libbt-vendor
 
+# Doze Mode
+PRODUCT_PACKAGES += \
+    LeEcoDoze
+
 # Netutils
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0 \
