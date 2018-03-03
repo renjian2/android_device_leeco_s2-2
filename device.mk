@@ -115,7 +115,8 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libbt-vendor
+    libbt-vendor \
+    libbthost_if
 
 # Doze Mode
 PRODUCT_PACKAGES += \
