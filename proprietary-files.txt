@@ -1,7 +1,6 @@
 -app/TimeService/TimeService.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
 -app/fastdormancy/fastdormancy.apk
-bin/btnvtool
 bin/ims_rtp_daemon
 bin/loc_launcher
 bin/ssr_diag
@@ -210,6 +209,7 @@ etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 -vendor/app/ims/ims.apk
 -vendor/app/imssettings/imssettings.apk
+vendor/bin/btnvtool
 vendor/bin/fidodaemon
 vendor/bin/mm-pp-daemon
 vendor/bin/qti
